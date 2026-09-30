@@ -1,0 +1,124 @@
+﻿E401 [*] Multiple imports on one line
+ --> task_manager.py:1:1
+  |
+1 | import json,sys,os
+  | ^^^^^^^^^^^^^^^^^^
+2 | from datetime import datetime
+  |
+help: Split imports
+  |
+  - import json,sys,os
+1 + import json
+2 + import sys
+3 + import os
+4 | from datetime import datetime
+  |
+
+I001 [*] Import block is un-sorted or un-formatted
+ --> task_manager.py:1:1
+  |
+1 | / import json,sys,os
+2 | | from datetime import datetime
+  | |_____________________________^
+3 |
+4 |   f="tasks.json"
+  |
+help: Organize imports
+  |
+  - import json,sys,os
+1 + import json
+2 + import os
+3 + import sys
+4 | from datetime import datetime
+  |
+
+F401 [*] `datetime.datetime` imported but unused
+ --> task_manager.py:2:22
+  |
+1 | import json,sys,os
+2 | from datetime import datetime
+  |                      ^^^^^^^^
+3 |
+4 | f="tasks.json"
+  |
+help: Remove unused import: `datetime.datetime`
+  |
+1 | import json,sys,os
+  - from datetime import datetime
+2 |
+  |
+
+E701 Multiple statements on one line (colon)
+  --> task_manager.py:32:44
+   |
+30 |     t=load()
+31 |     for x in t:
+32 |         if filter=="done" and not x["done"]: continue
+   |                                            ^
+33 |         if filter=="pending" and x["done"]: continue
+34 |         print(x["id"],x["title"],x["due"],"[x]" if x["done"] else "[ ]")
+   |
+
+E701 Multiple statements on one line (colon)
+  --> task_manager.py:33:43
+   |
+31 |     for x in t:
+32 |         if filter=="done" and not x["done"]: continue
+33 |         if filter=="pending" and x["done"]: continue
+   |                                           ^
+34 |         print(x["id"],x["title"],x["due"],"[x]" if x["done"] else "[ ]")
+   |
+
+E701 Multiple statements on one line (colon)
+  --> task_manager.py:38:19
+   |
+36 | if __name__=="__main__":
+37 |     a=sys.argv
+38 |     if a[1]=="add": add(a[2],a[3])
+   |                   ^
+39 |     elif a[1]=="done": done(a[2])
+40 |     elif a[1]=="list":
+   |
+
+E701 Multiple statements on one line (colon)
+  --> task_manager.py:39:22
+   |
+37 |     a=sys.argv
+38 |     if a[1]=="add": add(a[2],a[3])
+39 |     elif a[1]=="done": done(a[2])
+   |                      ^
+40 |     elif a[1]=="list":
+41 |         if len(a)>2: ls(a[2])
+   |
+
+E701 Multiple statements on one line (colon)
+  --> task_manager.py:41:20
+   |
+39 |     elif a[1]=="done": done(a[2])
+40 |     elif a[1]=="list":
+41 |         if len(a)>2: ls(a[2])
+   |                    ^
+42 |         else: ls()
+43 |     else: print("bad command")
+   |
+
+E701 Multiple statements on one line (colon)
+  --> task_manager.py:42:13
+   |
+40 |     elif a[1]=="list":
+41 |         if len(a)>2: ls(a[2])
+42 |         else: ls()
+   |             ^
+43 |     else: print("bad command")
+   |
+
+E701 Multiple statements on one line (colon)
+  --> task_manager.py:43:9
+   |
+41 |         if len(a)>2: ls(a[2])
+42 |         else: ls()
+43 |     else: print("bad command")
+   |         ^
+
+Found 10 errors.
+[*] 3 fixable with the `--fix` option.
